@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Import babel transpiler -->
+    <script src="https://unpkg.com/@babel/polyfill@7.6.0/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="./react.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [state, setState] = React.useState({ count: 0, history: [] });
+
+      const update = (prevState, change) => {
+        const newState = prevState.count + change;
+        return {
+          count: newState,
+          history: [...prevState.history, newState]
+        }
+      }
+
+      return (
+        <div>
+          <div>{state.count}</div>
+          <button
+            type="button"
+            onClick={() => setState((s) => update(s, 1))}
+          >+</button>
+          <button
+            type="button"
+            onClick={() => setState((s) => update(s, -1))}
+          >-</button>
+          {state.count >= 2 ? (
+            <div>
+              <span>Shown on 2 or more</span>
+            </div>
+          ): null}
+        </div>
+      )
+    }
+
+    const container = document.getElementById("root");
+
+    React.render(<App />, container);
+  </script>
+</html>
