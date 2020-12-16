@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../base.css">
+  </head>
+  <body>
+    <div ng-controller="MainCtrl">
+      <button type="button" ng-click="minus()">-</button>
+      <span ng-bind="count">0</span>
+      <button type="button" ng-click="plus()">+</button>
+      <div x-show="count >= 2">
+        Shown on 2 or more
+      </div>
+    </div>
+  </body>
+  <script src="./angularjs.js"></script>
+</html>
