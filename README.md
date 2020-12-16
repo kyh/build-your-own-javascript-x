@@ -1,8 +1,8 @@
 # Rebuilding frontend frameworks from scratch
 
-> A DIY guide to rebuilding Alpine, Vue, React, Angular, Styled Components
+> Featuring - Alpine, Vue, React, Redux, Angular, Styled Components
 
-This repo will try to reproduce a minimal working version of each framework by building a reactive counter example.
+This repo will try to reproduce a minimal working version of each framework by building a [reactive counter example](https://webcomponents.dev/blog/all-the-ways-to-make-a-web-component/).
 
 The core components of a reactive framework
 - Keep track of some data
