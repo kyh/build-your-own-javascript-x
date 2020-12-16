@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../base.css">
   </head>
   <body>
     <div x-data="{ count: 0, history: [] }">
-      <div x-text="count">
-        0
-      </div>
-      <button type="button" x-on:click="count++">+</button>
       <button type="button" x-on:click="count--">-</button>
+      <span x-text="count">0</span>
+      <button type="button" x-on:click="count++">+</button>
       <div x-show="count >= 2">
-        <span>Shown on 2 or more</span>
+        Shown on 2 or more
       </div>
     </div>
   </body>

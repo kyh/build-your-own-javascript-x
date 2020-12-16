@@ -7,6 +7,7 @@
     <!-- Import babel transpiler -->
     <script src="https://unpkg.com/@babel/polyfill@7.6.0/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="../base.css">
   </head>
   <body>
     <div id="root"></div>
@@ -26,18 +27,18 @@
 
       return (
         <div>
-          <div>{state.count}</div>
-          <button
-            type="button"
-            onClick={() => setState((s) => update(s, 1))}
-          >+</button>
           <button
             type="button"
             onClick={() => setState((s) => update(s, -1))}
           >-</button>
+          <span>{state.count}</span>
+          <button
+            type="button"
+            onClick={() => setState((s) => update(s, 1))}
+          >+</button>
           {state.count >= 2 ? (
             <div>
-              <span>Shown on 2 or more</span>
+              Shown on 2 or more
             </div>
           ): null}
         </div>
