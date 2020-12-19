@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Import babel transpiler -->
+    <script src="https://unpkg.com/@babel/polyfill@7.6.0/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="../base.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="./react.js"></script>
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { count: 0, history: [] };
+      }
+
+      update(prevState, change) {
+        const newState = prevState.count + change;
+        return {
+          count: newState,
+          history: [...prevState.history, newState]
+        }
+      }
+
+      render() {
+        return (
+          <div>
+            <button
+              type="button"
+              onClick={() => this.setState((s) => this.update(s, -1))}
+            >-</button>
+            <span>{this.state.count}</span>
+            <button
+              type="button"
+              onClick={() => this.setState((s) => this.update(s, 1))}
+            >+</button>
+            {this.state.count >= 2 ? (
+              <div>
+                Shown on 2 or more
+              </div>
+            ): null}
+          </div>
+        )
+      }
+    }
+
+    const container = document.getElementById("root");
+
+    React.render(<App />, container);
+  </script>
+</html>
