@@ -26,21 +26,15 @@
           props: { className: 'red' }
         }]
       },
-      $$typeof: Symbol.for("react.element"),
-      ref: null,
-      _owner: null
     }
  * ```
  */
 const createElement = (type, props, ...children) => ({
-  $$typeof: Symbol.for("react.element"),
-  type: type,
+  type,
   props: {
-    children: children.flat(1),
     ...props,
+    children: children.flat(1),
   },
-  ref: null,
-  _owner: null,
 });
 
 class Component {
