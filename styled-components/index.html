@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React w/ Fiber</title>
+    <title>Styled Components</title>
     <!-- Babel transpiler -->
     <script src="https://unpkg.com/@babel/polyfill@7.6.0/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link rel="stylesheet" href="../base.css" />
   </head>
   <body>
     <div id="root"></div>
   </body>
-  <script src="./react.js"></script>
+  <!-- Styled Components only work with React -->
+  <script src="../react-fiber/react.js"></script>
+  <script src="./styled.js"></script>
   <script type="text/babel">
     const App = () => {
       const [state, setState] = React.useState({ count: 0 });

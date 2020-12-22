@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alpine</title>
-    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="../base.css" />
   </head>
   <body>
     <div x-data="{ count: 0 }">
       <button type="button" x-on:click="count--">-</button>
       <span x-text="count">0</span>
       <button type="button" x-on:click="count++">+</button>
-      <div x-show="count >= 2">
-        Shown on 2 or more
-      </div>
+      <div x-show="count >= 2">Shown on 2 or more</div>
     </div>
   </body>
   <script src="./alpine.js"></script>
