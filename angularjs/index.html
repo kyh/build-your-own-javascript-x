@@ -11,10 +11,21 @@
       <button type="button" ng-click="minus()">-</button>
       <span ng-bind="count">0</span>
       <button type="button" ng-click="plus()">+</button>
-      <div x-show="count >= 2">
+      <div ng-show="count >= 2">
         Shown on 2 or more
       </div>
     </div>
   </body>
-  <script src="./angularjs.js"></script>
+  <script type="text/javascript" src="./angularjs.js"></script>
+  <script>
+    Provider.controller('MainCtrl', ($scope) => {
+      $scope.count = 0;
+      $scope.minus = () => {
+        $scope.count -= 1;
+      };
+      $scope.plus = () => {
+        $scope.count += 1;
+      };
+    });
+  </script>
 </html>

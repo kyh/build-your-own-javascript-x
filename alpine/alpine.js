@@ -22,7 +22,7 @@ const walkDom = (el, callback) => {
   }
 };
 
-const start = () => {
+const bootstrap = () => {
   const rootEls = document.querySelectorAll("[x-data]");
   rootEls.forEach((el) => {
     if (!el.__x) {
@@ -38,10 +38,12 @@ const start = () => {
 };
 
 const directives = {
-  "x-text": (el, value) => {
+  "x-text": (el, component, expression) => {
+    const value = component.safeEval(expression);
     el.innerText = value;
   },
-  "x-show": (el, value) => {
+  "x-show": (el, component, expression) => {
+    const value = component.safeEval(expression);
     el.style.display = value ? "block" : "none";
   },
 };
@@ -64,7 +66,7 @@ class Component {
     return Function(`"use strict";return (${dataString})`)();
   }
 
-  registerListeners = () => {
+  registerListeners() {
     walkDom(this.rootEl, (el) => {
       Array.from(el.attributes).forEach((attribute) => {
         if (!attribute.name.startsWith("x-on:")) return;
@@ -74,13 +76,13 @@ class Component {
         });
       });
     });
-  };
+  }
 
   refreshDOM() {
     walkDom(this.rootEl, (el) => {
       Array.from(el.attributes).forEach((attribute) => {
         if (!directives.hasOwnProperty(attribute.name)) return;
-        directives[attribute.name](el, this.safeEval(attribute.value));
+        directives[attribute.name](el, this, attribute.value);
       });
     });
   }
@@ -90,4 +92,5 @@ class Component {
   }
 }
 
-start();
+// Initialize on DOM ready
+document.addEventListener("DOMContentLoaded", bootstrap);

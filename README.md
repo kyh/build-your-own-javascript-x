@@ -16,3 +16,4 @@ The core components of a reactive framework:
 | Alpine         | [`alpine.js`](./alpine/alpine.js)    | [`index.html`](./alpine/index.html)      | [Example](https://tehkaiyu.github.io/frameworks/alpine/)      |
 | React          | [`react.js`](./react/react.js)       | [`index.html`](./react/index.html)       | [Example](https://tehkaiyu.github.io/frameworks/react/)       |
 | React w/ Fiber | [`react.js`](./react-fiber/react.js) | [`index.html`](./react-fiber/index.html) | [Example](https://tehkaiyu.github.io/frameworks/react-fiber/) |
+| AngularJS      | [`angular.js`](./angular/angular.js) | [`index.html`](./angular/index.html)     | [Example](https://tehkaiyu.github.io/frameworks/angular/)     |
