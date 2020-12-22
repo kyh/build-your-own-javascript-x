@@ -209,8 +209,6 @@ class VCompositeNode {
   }
 }
 
-const root = {};
-
 /**
  * With the class-cache we can just replace every node on a render of the DOM
  * and just pop stateful components from the cache whenever we encounter one.
@@ -234,6 +232,8 @@ const instantiateVNode = (reactElement) => {
 
   return new VDomNode(reactElement);
 };
+
+const root = {};
 
 const render = (
   reactElement = root.reactElement,

@@ -9,6 +9,8 @@ const clone = (a) => {
 };
 
 class Scope {
+  static counter = 0;
+
   constructor(parent, id) {
     this.$$watchers = [];
     this.$$children = [];
@@ -79,8 +81,6 @@ class Scope {
   }
 }
 
-Scope.counter = 0;
-
 const Provider = {
   get(name, locals) {
     if (this._cache[name]) {
@@ -118,15 +118,14 @@ const Provider = {
     });
     return fn.apply(null, deps);
   },
-  _cache: { $rootScope: new Scope() },
-  _providers: {},
   _register(name, service) {
     this._providers[name] = service;
   },
+  _cache: { $rootScope: new Scope() },
+  _providers: {},
+  DIRECTIVES_SUFFIX: "Directive",
+  CONTROLLERS_SUFFIX: "Controller",
 };
-
-Provider.DIRECTIVES_SUFFIX = "Directive";
-Provider.CONTROLLERS_SUFFIX = "Controller";
 
 const DOMCompiler = {
   bootstrap() {
@@ -222,4 +221,4 @@ Provider.directive("ng-model", () => {
 });
 
 // Initialize on DOM ready
-document.addEventListener("DOMContentLoaded", DOMCompiler.bootstrap);
+document.addEventListener("DOMContentLoaded", () => DOMCompiler.bootstrap());

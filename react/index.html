@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Import babel transpiler -->
+    <title>React</title>
+    <!-- Babel transpiler -->
     <script src="https://unpkg.com/@babel/polyfill@7.6.0/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="stylesheet" href="../base.css">
@@ -17,14 +17,13 @@
     class App extends React.Component {
       constructor(props) {
         super(props);
-        this.state = { count: 0, history: [] };
+        this.state = { count: 0 };
       }
 
       update(prevState, change) {
         const newState = prevState.count + change;
         return {
           count: newState,
-          history: [...prevState.history, newState]
         }
       }
 
