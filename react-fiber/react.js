@@ -1,11 +1,18 @@
+/**
+ * Original source thanks to https://github.com/pomber/didact
+ * Modified with a few bug fixes
+ */
+
 const createElement = (type, props, ...children) => {
   return {
     type,
     props: {
       ...props,
-      children: children.map((child) =>
-        typeof child === "object" ? child : createTextElement(child)
-      ),
+      children: children
+        .flat(1)
+        .map((child) =>
+          typeof child === "object" ? child : createTextElement(child)
+        ),
     },
   };
 };
