@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>uhtml</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="./uhtml.js"></script>
+  <script>
+    const state = { count: 0 };
+
+    const minus = () => {
+      state.count = state.count -= 1;
+    };
+
+    const plus = () => {
+      state.count = state.count += 1;
+    };
+
+    const app = uhtml.html`
+      <div>
+        <button
+          type="button"
+          onclick=${minus}
+        >
+          -
+        </button>
+        <span>${state.count}</span>
+        <button
+          type="button"
+          onclick=${plus}
+        >
+          +
+        </button>
+        ${state.count >= 2 ? uhtml.html`<div>Shown on 2 or more</div>` : null}
+      </div>
+    `;
+
+    const container = document.getElementById("root");
+
+    uhtml.render(container, app);
+  </script>
+</html>

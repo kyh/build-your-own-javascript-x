@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <div>
+      <button type="button" onclick="store.dispatch({ type: 'MINUS' })">
+        -
+      </button>
+      <span id="count">0</span>
+      <button type="button" onclick="store.dispatch({ type: 'PLUS' })">
+        +
+      </button>
+    </div>
+  </body>
+  <script src="./redux.js"></script>
+  <script>
+    const reducer = (state = { count: 0 }, action) => {
+      switch (action.type) {
+        case "PLUS":
+          const nextState = {
+            count: (state.count += 1),
+          };
+
+          return nextState;
+        case "MINUS":
+          const nextState = {
+            count: (state.count -= 1),
+          };
+
+          return nextState;
+        default:
+          return state;
+      }
+    };
+
+    const store = createStore(reducer);
+    const counterNode = document.getElementById("count");
+
+    store.subscribe(() => {
+      const state = store.getState();
+      const count = state.count;
+      counterNode.innerHTML = count;
+    });
+
+    store.dispatch(); // Sets the inital state
+  </script>
+</html>
