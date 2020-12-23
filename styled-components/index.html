@@ -7,14 +7,35 @@
     <!-- Babel transpiler -->
     <script src="https://unpkg.com/@babel/polyfill@7.6.0/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Styled Components only work with React -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Styled Components uses Stylis to interpolate CSS -->
+    <script src=https://unpkg.com/stylis></script>
   </head>
   <body>
     <div id="root"></div>
   </body>
-  <!-- Styled Components only work with React -->
-  <script src="../react-fiber/react.js"></script>
-  <script src="./styled.js"></script>
+  <script type="text/babel" src="./styled.js"></script>
   <script type="text/babel">
+    const Button = styled.button`
+      font-size: 200%;
+      width: 4rem;
+      height: 4rem;
+      border: none;
+      border-radius: 10px;
+      background-color: seagreen;
+      color: white;
+    `;
+
+    const Span = styled.span`
+      font-size: 200%;
+      width: 4rem;
+      display: inline-block;
+      text-align: center;
+      color: ${({ count }) => count >= 2 ? 'red': 'black'};
+    `;
+
     const App = () => {
       const [state, setState] = React.useState({ count: 0 });
 
@@ -27,13 +48,13 @@
 
       return (
         <div>
-          <button type="button" onClick={() => setState((s) => update(s, -1))}>
+          <Button type="button" onClick={() => setState((s) => update(s, -1))}>
             -
-          </button>
-          <span>{state.count}</span>
-          <button type="button" onClick={() => setState((s) => update(s, 1))}>
+          </Button>
+          <Span count={state.count}>{state.count}</Span>
+          <Button type="button" onClick={() => setState((s) => update(s, 1))}>
             +
-          </button>
+          </Button>
           {state.count >= 2 ? <div>Shown on 2 or more</div> : null}
         </div>
       );
@@ -41,6 +62,6 @@
 
     const container = document.getElementById("root");
 
-    React.render(<App />, container);
+    ReactDOM.render(<App />, container);
   </script>
 </html>
