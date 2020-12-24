@@ -19,26 +19,24 @@
   </body>
   <script src="./redux.js"></script>
   <script>
-    const reducer = (state = { count: 0 }, action) => {
+    const initialState = { count: 0 };
+
+    const reducer = (state = initialState, action) => {
       switch (action.type) {
         case "PLUS":
-          const nextState = {
+          return {
             count: (state.count += 1),
           };
-
-          return nextState;
         case "MINUS":
-          const nextState = {
+          return {
             count: (state.count -= 1),
           };
-
-          return nextState;
         default:
           return state;
       }
     };
 
-    const store = createStore(reducer);
+    const store = createStore(reducer, initialState);
     const counterNode = document.getElementById("count");
 
     store.subscribe(() => {
@@ -46,7 +44,5 @@
       const count = state.count;
       counterNode.innerHTML = count;
     });
-
-    store.dispatch(); // Sets the inital state
   </script>
 </html>
