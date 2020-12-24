@@ -21,8 +21,9 @@ const hash = (s) =>
   }, 0);
 
 /**
- * If the custom style tag doesn't exist, we create and inject it into
- * the head
+ * Styled Components generates its own <style> tag which contain all the
+ * styles for each component. If the tag doesn't exist, this function will
+ * create and inject it into the head
  */
 const createOrGetStyleTag = () => {
   if (!styleTag) {
@@ -38,6 +39,10 @@ const createOrGetStyleTag = () => {
  * Concat all the string chunks from the tagged template[1] with the
  * results of the expressions one by one; and if an expression is a
  * function it is called with the component’s props.
+ *
+ * @param {String[]} - Array of template strings
+ * @param {Function[]} - Array of template expressions
+ * @param {Record} - Component props
  */
 const interpolateStyles = (strs, exprs, props) => {
   const evaluatedStyles = exprs.reduce((result, expr, index) => {
@@ -131,14 +136,16 @@ A tagged template:
 
 const Button = styled.button`
   color: coral;
-  padding: 0.25rem 1rem;
+  background: ${(props) => props.success ? 'green' : 'blue'};
+  padding: 1rem;
 `;
 
 Is the same as:
 
 const Button = styled('button')([
-  'color: coral;' +
-  'padding: 0.25rem 1rem;'
-]);
+  'color: coral; background: ',
+  '; padding: 0.25rem 1rem;'
+], (props) => props.success ? 'green' : 'blue');
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates
 */
