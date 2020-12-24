@@ -86,39 +86,25 @@ const styled = (TargetComponent) => (strs, ...exprs) => {
   counter++;
   const componentId = "sc-" + hash("sc" + counter);
 
-  class StyledComponent extends React.Component {
-    constructor(props) {
-      super(props);
-      const evaluatedStyles = interpolateStyles(strs, exprs, props);
-      const className = createClassname(componentId, evaluatedStyles);
-      injectStyles(className, evaluatedStyles);
-      this.state = {
-        generatedClassName: className,
-      };
-    }
+  const StyledComponent = ({ className = "", ...props }) => {
+    // On every rerender we evaluate the styles since props has changed
+    const evaluatedStyles = interpolateStyles(strs, exprs, props);
+    // Create a className based off newly evaluated styles
+    const generatedClassName = createClassname(componentId, evaluatedStyles);
 
-    componentDidUpdate() {
-      const evaluatedStyles = interpolateStyles(strs, exprs, this.props);
-      const className = createClassname(componentId, evaluatedStyles);
-      if (className !== this.state.generatedClassName) {
-        injectStyles(className, evaluatedStyles);
-        this.setState({
-          generatedClassName: className,
-        });
-      }
-    }
+    // We only inject in new styles if there are changes to the newly
+    // evaluated styles
+    React.useEffect(() => {
+      injectStyles(generatedClassName, evaluatedStyles);
+    }, [generatedClassName]);
 
-    render() {
-      const generatedClassName = this.state.generatedClassName;
-      const className = this.props.className || "";
-      return (
-        <TargetComponent
-          {...this.props}
-          className={className + " " + componentId + " " + generatedClassName}
-        />
-      );
-    }
-  }
+    return (
+      <TargetComponent
+        {...props}
+        className={className + " " + componentId + " " + generatedClassName}
+      />
+    );
+  };
 
   StyledComponent.componentId = componentId;
 
