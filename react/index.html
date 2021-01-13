@@ -18,32 +18,29 @@
       constructor(props) {
         super(props);
         this.state = { count: 0 };
+        this.onIncrease = this.onIncrease.bind(this);
+        this.onDecrease = this.onDecrease.bind(this);
       }
 
-      update(prevState, change) {
-        const newState = prevState.count + change;
-        return {
-          count: newState,
-        };
+      onIncrease() {
+        this.setState({ count: this.state.count + 1 });
+      }
+
+      onDecrease() {
+        this.setState({ count: this.state.count - 1 });
       }
 
       render() {
         return (
           <div>
-            <button
-              type="button"
-              onClick={() => this.setState((s) => this.update(s, -1))}
-            >
+            <button type="button" onClick={this.onDecrease}>
               -
             </button>
             <span>{this.state.count}</span>
-            <button
-              type="button"
-              onClick={() => this.setState((s) => this.update(s, 1))}
-            >
+            <button type="button" onClick={this.onIncrease}>
               +
             </button>
-            {this.state.count >= 2 ? <div>Shown on 2 or more</div> : null}
+            {this.state.count >= 2 ? <div>Shown on 2 or more</div> : <div />}
           </div>
         );
       }
