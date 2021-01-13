@@ -16,5 +16,3 @@ This repo will try to reproduce a minimal working version of each framework and 
 | Styled Components | [`styled.js`](./styled-components/styled.js) | [`index.html`](./styled-components/index.html) | [Example](https://tehkaiyu.github.io/frameworks/styled-components/) |
 
 **[[Submit a framework](https://github.com/tehkaiyu/build-your-own-javascript-x/issues/new)]**
-
-Inspired by [build-your-own-x](https://github.com/danistefanovic/build-your-own-x)
