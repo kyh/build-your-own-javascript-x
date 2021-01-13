@@ -1,8 +1,8 @@
 # Rebuilding JavaScript frameworks from scratch
 
-> Featuring the popular libraries - Alpine, AngularJS, React, Redux, Styled Components, Vue
+> "What I cannot create, I do not understand" — Richard Feynman
 
-This repo will try to reproduce a minimal working version of each framework and then using it to build a [reactive counter example](https://webcomponents.dev/blog/all-the-ways-to-make-a-web-component/).
+This repo will try to reproduce a minimal working version of popular JavaScript frameworks and use it to build a [reactive counter example](https://webcomponents.dev/blog/all-the-ways-to-make-a-web-component/). Featuring Alpine, AngularJS, React, Redux, Styled Components, and Vue.
 
 ### Frameworks
 
