@@ -15,4 +15,4 @@ This repo will try to reproduce a minimal working version of each framework and 
 | Redux             | [`redux.js`](./redux/redux.js)               | [`index.html`](./redux/index.html)             | [Example](https://tehkaiyu.github.io/frameworks/redux/)             |
 | Styled Components | [`styled.js`](./styled-components/styled.js) | [`index.html`](./styled-components/index.html) | [Example](https://tehkaiyu.github.io/frameworks/styled-components/) |
 
-**[[Submit a framework](https://github.com/tehkaiyu/build-your-own-javascript-x/issues/new)]**
+[[Submit a framework](https://github.com/tehkaiyu/build-your-own-javascript-x/issues/new)]
